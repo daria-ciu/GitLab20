@@ -12,4 +12,24 @@ public class MyAccount extends BasePage{
         public void clickOnMyAccount () {
             driver.findElement(ClickOnMyAccount).click();
         }
+
+
+    By usernameInput = By.id("input-email");
+    By passwordInput = By.id("input-password");
+
+    By loginButton = By.xpath("/html/body/div[1]/div[5]/div[1]/div/div/div/div[2]/div/div/form/input[1]");
+
+    public void login(String username, String password) {
+        driver.findElement(usernameInput).sendKeys(username);
+        driver.findElement(passwordInput).sendKeys(password);
+        driver.findElement(loginButton).click();
+    }
+
+    By errorMessage = By.xpath ("/html/body/div[1]/div[5]/div[1]/div[1]");
+    public boolean isErrorMessageDisplayed() { return driver.findElement(errorMessage).isDisplayed();
+    }
+
+
+
+
     }
