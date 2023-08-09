@@ -77,8 +77,6 @@ By loggedInWishlistButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div
     public Boolean getErrorMessage() {driver.findElement(errorMessage);
         return getErrorMessageElement.isDisplayed();}
 
-    public void testWishlistWhenLoggedIn(){
-        driver.findElement(loggedInWishlistButton).click();
     }*/
 
 
