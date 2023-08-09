@@ -15,21 +15,21 @@ import pages.MyAccount;
 public class MyAccountTestCase extends BasePage {
     private MyAccount myAccount;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         super.setUp();
         myAccount = new MyAccount(driver);
     }
 
-    @Test
+    /*@Test (priority = 1)
     public void myAccountTestCase() throws InterruptedException {
 
         myAccount.clickOnMyAccount();
-    }
+    }*/
 
 
-    @Test
-    public void testSuccessfulLogin() {
+    @Test (priority = 1)
+    public void testSuccessfulLogin() throws InterruptedException{
 
         myAccount.clickOnMyAccount();
 
@@ -45,8 +45,8 @@ public class MyAccountTestCase extends BasePage {
     }
 
 
-    @Test
-    public void testInvalidLogin() {
+    @Test (priority = 2)
+    public void testInvalidLogin() throws InterruptedException{
 
         myAccount.clickOnMyAccount();
 
@@ -60,5 +60,16 @@ public class MyAccountTestCase extends BasePage {
         Assert.assertTrue(isErrorMessageDisplayed, "No error message displayed for invalid login.");
 
 
+    }
+
+    @Test(priority = 3)
+    public void testEmptyFieldsLogin() throws InterruptedException{
+        myAccount.clickOnMyAccount();
+
+
+        myAccount.pressEnterOnLogin();
+
+        boolean isErrorMessageDisplayed = myAccount.isErrorMessageDisplayed();
+        Assert.assertTrue(isErrorMessageDisplayed, "No error message displayed for empty fields login.");
     }
 }

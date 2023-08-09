@@ -1,5 +1,6 @@
 package pages;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 
@@ -29,6 +30,9 @@ public class MyAccount extends BasePage{
     public boolean isErrorMessageDisplayed() { return driver.findElement(errorMessage).isDisplayed();
     }
 
+    public void pressEnterOnLogin() {
+        driver.findElement(usernameInput).sendKeys(Keys.ENTER);
+    }
 
 
 
