@@ -27,9 +27,9 @@ public class ProductDetailTestCase extends BasePage {
 
 
 
-        /*Boolean SuccessMessage = productDetail.getSuccessMessage();
-        Assert.assertTrue(SuccessMessage, "Success: You have added HTC Touch HD to your shopping cart!");
-    */
+        /*boolean SuccessMessage = productDetail.getSuccessMessage();
+        Assert.assertTrue(SuccessMessage, "Success: You have added HTC Touch HD to your shopping cart!");*/
+
     }
 
 

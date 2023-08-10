@@ -56,9 +56,10 @@ By loggedInWishlistButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div
        waitForAddToCartButton();
         driver.findElement(addToCartButton).click();
     }
-    /*By successMessage = By.xpath("/html/body/div[2]/div/div[2]/div[1]/p");
-    WebElement successMessageElement = driver.findElement(successMessage);
-   public Boolean getSuccessMessage(){
+    /*By successMessage = By.xpath("/html/body/div[2]/div/div[2]/div[1]/p/a[1]");
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    WebElement successMessageElement =  wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage));
+   public boolean getSuccessMessage(){
         driver.findElement(successMessage);
         return successMessageElement.isDisplayed();
 
