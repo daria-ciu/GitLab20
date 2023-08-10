@@ -22,48 +22,47 @@ public class ShoppingCart extends BasePage {
     By successMessage = By.xpath("/html/body/div[1]/div[5]/div[1]/div[1]");
 
 
-    public void clickOnPamlTreoPro (){driver.findElement(PalmTreoPro).click();}
-    public  void clickOnAddToCart (){driver.findElement(AddToCart).click();}
-    public void clickOnIncreaseQty (){driver.findElement(IncreaseQtyButton).click();}
-    public void waitForClickOnCartIcon (){
+    public void clickOnPamlTreoPro() {
+        driver.findElement(PalmTreoPro).click();
+    }
+
+    public void clickOnAddToCart() {
+        driver.findElement(AddToCart).click();
+    }
+
+    public void clickOnIncreaseQty() {
+        driver.findElement(IncreaseQtyButton).click();
+    }
+
+    public void waitForClickOnCartIcon() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until (ExpectedConditions.visibilityOfElementLocated(CartIcon));
-    }
-    public void clickOnCartIcon (){
-        waitForClickOnCartIcon();driver.findElement(CartIcon).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(CartIcon));
     }
 
-    public void editQtyField (){driver.findElement(QtyField).sendKeys("3");}
-        public void clearSearchField (){driver.findElement(QtyField).clear();}
-
-    public void clickUpdateButton (){driver.findElement(updateButton).click();}
-
-
-
-
-
-
-
-    public boolean isQtyCorrect (){return driver.findElement(QtyNo).isDisplayed ();}
-    public boolean showSuccessMessage (){return driver.findElement(successMessage).isDisplayed();}
-
-   /* // Metoda pentru a verifica dacă un produs se află în coșul de cumpărături
-    public boolean isProductInCart(String productName) {
-        // Implementați logica de verificare a produsului în coș
+    public void clickOnCartIcon() {
+        waitForClickOnCartIcon();
+        driver.findElement(CartIcon).click();
     }
 
-    // Metoda pentru a actualiza cantitatea unui produs din coșul de cumpărături
-    public void updateCartItemQuantity(String productName, int quantity) {
-        // Implementați logica de actualizare a cantității produsului în coș
+    public void editQtyField() {
+        driver.findElement(QtyField).sendKeys("3");
     }
 
-    // Metoda pentru a obține cantitatea unui produs din coșul de cumpărături
-    public int getCartItemQuantity(String productName) {
-        // Implementați logica de obținere a cantității produsului din coș
+    public void clearSearchField() {
+        driver.findElement(QtyField).clear();
     }
 
-    // Metoda pentru a naviga către pagina de finalizare a comenzii
-    public void goToCheckout() {
-        // Implementați logica de navigare către pagina de finalizare a comenzii
-    }*/
+    public void clickUpdateButton() {
+        driver.findElement(updateButton).click();
+    }
+
+
+    public boolean isQtyCorrect() {
+        return driver.findElement(QtyNo).isDisplayed();
+    }
+
+    public boolean showSuccessMessage() {
+        return driver.findElement(successMessage).isDisplayed();
+    }
+
 }
