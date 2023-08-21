@@ -1,4 +1,6 @@
 package testCases;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.Assert;
@@ -24,13 +26,17 @@ public class ProductDetailTestCase extends BasePage {
         productDetail.clickPhoneTabletsAndIpod();
         productDetail.hoverOverImage();
         productDetail.clickAddToCart();
+        productDetail.clickOnCartIcon();
 
-
-
-        /*boolean SuccessMessage = productDetail.getSuccessMessage();
-        Assert.assertTrue(SuccessMessage, "Success: You have added HTC Touch HD to your shopping cart!");*/
-
+        WebElement productInCartElement = driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[1]/div[2]/div/form/div/table/tbody/tr/td[2]/a"));
+        String productInCart = productInCartElement.getText();
+        String expectedProductInCart = "HTC Touch HD";
+        Assert.assertEquals(productInCart, expectedProductInCart, "Product in cart does not match the expected product.");
     }
+
+
+
+
 
 
     @Test (priority = 2)
@@ -43,8 +49,8 @@ public class ProductDetailTestCase extends BasePage {
         productDetail.testWishlistWhenNotLoggedIn();
 
 
-       /* Boolean actualErrorMessage = productDetail.getErrorMessage();
-        Assert.assertTrue(actualErrorMessage,"You must login or create an account to save HTC Touch HD to your wish list!\"");*/
+       Boolean actualErrorMessage = productDetail.getErrorMessage();
+        Assert.assertTrue(actualErrorMessage,"You must login or create an account to save HTC Touch HD to your wish list!\"");
 
 
 }
@@ -60,6 +66,9 @@ public class ProductDetailTestCase extends BasePage {
     productDetail.hoverOverImage();
     productDetail.testWishlistWhenLoggedIn();
 
+    Boolean successMessage = productDetail.GetSuccessMessage();
+    Assert.assertTrue(successMessage, "Success: You have added HTC Touch HD to your wish list!");
+
 }
 
 
@@ -72,6 +81,8 @@ public class ProductDetailTestCase extends BasePage {
     productDetail.hoverOverImage();
     productDetail.clickQuickView();
 
+    boolean quickViewPopUp = productDetail.isQuickViewPopUpDisplayed();
+    Assert.assertTrue(quickViewPopUp, "HTC Touch HD" );
 }
 @Test(priority = 5)
 
@@ -80,6 +91,9 @@ public class ProductDetailTestCase extends BasePage {
     productDetail.clickPhoneTabletsAndIpod();
     productDetail.hoverOverImage();
     productDetail.clickCompare();
+
+    boolean CheckproductCompare = productDetail.getNotification();
+    Assert.assertTrue(CheckproductCompare, "Success: You have added HTC Touch HD to your product comparison!");
 }
 
 

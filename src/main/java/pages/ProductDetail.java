@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.interactions.Actions;
 
 
+
 public class ProductDetail extends BasePage {
 
     public ProductDetail(WebDriver driver) {
@@ -29,10 +30,14 @@ public class ProductDetail extends BasePage {
 
 By loggedInWishlistButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[2]/button[2]");
      By quickViewButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[2]/button[3]/i");
+By errorMessage = By.xpath("/html/body/div[2]/div/div[2]/div[1]/p");
+By successMessage = By.xpath("/html/body/div[2]/div/div[2]/div/p");
 
+By quickViewPopUp = By.xpath("/html/body/div[4]/div/div/div[1]/div/div/div[2]/div[1]/div/div/div[1]/a/img");
 
      By compareButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[2]/button[4]/i");
-
+    By CartIcon = By.xpath("/html/body/div[2]/div/div[2]/div[2]/div[1]/a");
+    By productCompare = By.xpath("/html/body/div[2]/div/div[2]/div/p");
     public void clickShopByCategory () {
         driver.findElement(ShopByCategory).click();
     }
@@ -56,14 +61,21 @@ By loggedInWishlistButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div
        waitForAddToCartButton();
         driver.findElement(addToCartButton).click();
     }
-    /*By successMessage = By.xpath("/html/body/div[2]/div/div[2]/div[1]/p/a[1]");
-    WebDriverWait wait = new WebDriverWait(driver, 10);
-    WebElement successMessageElement =  wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage));
-   public boolean getSuccessMessage(){
-        driver.findElement(successMessage);
-        return successMessageElement.isDisplayed();
 
-    }*/
+    public void waitForClickOnCartIcon() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(CartIcon));
+    }
+
+    public void clickOnCartIcon() {
+        waitForClickOnCartIcon();
+        driver.findElement(CartIcon).click();
+    }
+
+
+
+
+
 
 
     public void waitForTestWishlistWhenNotLoggedIn() {
@@ -82,7 +94,7 @@ By loggedInWishlistButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div
 
 
     public void waitForTestWishlistWhenLoggedIn() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 2);
         wait.until(ExpectedConditions.visibilityOfElementLocated(loggedInWishlistButton));}
         public void testWishlistWhenLoggedIn() {
             waitForTestWishlistWhenLoggedIn();driver.findElement(loggedInWishlistButton).click();
@@ -98,15 +110,39 @@ By loggedInWishlistButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div
 
 
     public void waitForCompare(){
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(compareButton));
     }
 
     public void clickCompare() {
         driver.findElement(compareButton).click();
     }
-
-
-
-
+public void waitForErrorMessage(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage));
 }
+
+    public boolean getErrorMessage (){waitForErrorMessage();return driver.findElement(errorMessage).isDisplayed();}
+
+    public void waitForSuccessMessage (){
+        WebDriverWait wait=new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(successMessage));}
+        public boolean GetSuccessMessage() {waitForSuccessMessage();return driver.findElement(successMessage).isDisplayed();}
+    public void waitForQuickViewPopUp(){
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(quickViewPopUp));
+    }
+    public boolean isQuickViewPopUpDisplayed (){waitForQuickViewPopUp();return  driver.findElement(quickViewPopUp).isDisplayed();}
+
+
+    public void checkProductCompare(){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(productCompare));
+    }
+
+    public boolean getNotification (){checkProductCompare();return driver.findElement(productCompare).isDisplayed();}
+    }
+
+
+
+

@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,7 +23,8 @@ public class InputControls extends BasePage {
     By firstRadio = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[7]/div[2]/div/div[1]/div");
     By sizeSelection = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[6]/div[2]/div/div[1]/div/label");
 
-
+    By mainImageLocator = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[1]/a/div/div[1]/img");
+    By smallImageLocator = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[1]/a/ul/li[1]/img");
 
     public void clickInStockBox (){driver.findElement(inStockBox).click();}
     public  void clickPreOrderBox (){driver.findElement(preOrderBox).click();}
@@ -37,6 +40,26 @@ public class InputControls extends BasePage {
     public void clickFirstradio (){driver.findElement(firstRadio).click();}
 
     public void selectSize (){driver.findElement(sizeSelection).click();}
+
+    public void hoverOverImage() {
+        Actions actions = new Actions(driver);
+        WebElement imageElement = driver.findElement(mainImageLocator);
+        actions.moveToElement(imageElement).perform();
+    }
+
+
+
+    public String getMainImageBeforeSelection() {
+        return driver.findElement(mainImageLocator).getAttribute("src");
+    }
+    public void selectSmallImage(int index) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement smallImage = wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(smallImageLocator).get(index - 1)));
+        smallImage.click();
+    }
+
+
+
     public boolean AppleSelector (){return driver.findElement(appleSelector).isEnabled();}
     public boolean ColorBlue (){return  driver.findElement(blueCheckbox).isEnabled();}
     public boolean ColorClear (){return  driver.findElement(colorClearButton).isEnabled();}

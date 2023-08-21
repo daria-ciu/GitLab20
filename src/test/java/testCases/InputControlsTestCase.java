@@ -105,4 +105,15 @@ boolean appleSelector = inputControls.AppleSelector();
         boolean isInactiveCheckboxSelected = inputControls.selectInactiveCheckbox();
         Assert.assertFalse(isInactiveCheckboxSelected, "Checkbox should not be selectable.");
     }
-}
+
+    @Test (priority = 9)
+            public void testSlidingImage () throws InterruptedException{
+
+    String mainImageBefore = inputControls.getMainImageBeforeSelection();
+    inputControls.hoverOverImage();
+    inputControls.selectSmallImage(1);
+    String mainImageAfter = inputControls.getMainImageBeforeSelection();
+    Assert.assertNotEquals(mainImageAfter, mainImageBefore, "Main image source should change after selecting a small image.");
+    }
+    }
+
