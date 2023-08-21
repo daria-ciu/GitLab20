@@ -21,15 +21,9 @@ public class MyAccountTestCase extends BasePage {
         myAccount = new MyAccount(driver);
     }
 
-    /*@Test (priority = 1)
-    public void myAccountTestCase() throws InterruptedException {
 
-        myAccount.clickOnMyAccount();
-    }*/
-
-
-    @Test (priority = 1)
-    public void testSuccessfulLogin() throws InterruptedException{
+    @Test(priority = 1)
+    public void testSuccessfulLogin() throws InterruptedException {
 
         myAccount.clickOnMyAccount();
 
@@ -45,8 +39,8 @@ public class MyAccountTestCase extends BasePage {
     }
 
 
-    @Test (priority = 2)
-    public void testInvalidLogin() throws InterruptedException{
+    @Test(priority = 2)
+    public void testInvalidLogin() throws InterruptedException {
 
         myAccount.clickOnMyAccount();
 
@@ -63,7 +57,7 @@ public class MyAccountTestCase extends BasePage {
     }
 
     @Test(priority = 3)
-    public void testEmptyFieldsLogin() throws InterruptedException{
+    public void testEmptyFieldsLogin() throws InterruptedException {
         myAccount.clickOnMyAccount();
 
 
@@ -71,5 +65,26 @@ public class MyAccountTestCase extends BasePage {
 
         boolean isErrorMessageDisplayed = myAccount.isErrorMessageDisplayed();
         Assert.assertTrue(isErrorMessageDisplayed, "No error message displayed for empty fields login.");
+    }
+
+
+    @Test(priority = 4)
+
+    public void testSuccessfulLogout() throws InterruptedException {
+
+        myAccount.clickOnMyAccount();
+
+
+        String username = "daria.ciubancan@gmail.com";
+        String password = "123456789";
+        myAccount.login(username, password);
+        myAccount.hoverOverImage();
+        myAccount.clickOnLogOut();
+
+        boolean isSuccsesfulLogouMessageDisplayed = myAccount.isLogoutMessageDisplayed();
+
+        Assert.assertTrue(isSuccsesfulLogouMessageDisplayed, "You have been logged off your account. It is now safe to leave the computer.");
+
+
     }
 }

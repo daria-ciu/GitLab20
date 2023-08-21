@@ -38,4 +38,25 @@ public class SearchFunctionalityTest extends BasePage {
       Assert.assertTrue(isNoResultMessageDisplayed, "The Message 'There is no product that matches the search criteria.' is not displayed.");
   }
 
+
+  @Test (priority = 3)
+
+  public void testEmptySearch() throws InterruptedException {
+      searchPage.performSearch("");
+
+      String expectedSearchResultsUrl = "https://ecommerce-playground.lambdatest.io/index.php?route=product%2Fsearch&search=";
+      String currentUrl = driver.getCurrentUrl();
+      Assert.assertEquals(currentUrl, expectedSearchResultsUrl, "Search option does not work for empty search.");
+  }
+
+
+
+
+
+
+
+
+
+
+
 }

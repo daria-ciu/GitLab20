@@ -17,6 +17,8 @@ public class HomePage extends BasePage {
 
     By imageCategory = By.xpath("/html/body/div[1]/div[5]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/a/figure/div[1]/img");
 
+    By homepageIconLocator = By.xpath("/html/body/div[1]/div[6]/header/div[2]/div[1]/div[1]/figure/a/img");
+
     public void clickCategoryBlog() {
         driver.findElement(categoryBlog).click();
     }
@@ -26,6 +28,7 @@ public class HomePage extends BasePage {
     }
 
     public void clickOnImageCategory(){driver.findElement(imageCategory).click();}
+    public void clickOnHomepageIcon (){driver.findElement(homepageIconLocator).click();}
 
 
 }

@@ -17,6 +17,8 @@ public class ProductDetail extends BasePage {
     }
     By ShopByCategory = By.xpath("/html/body/div[1]/div[5]/header/div[3]/div[1]/div/div[1]/a");
 
+    By resetCategory = By.xpath("/html/body/div[1]/div[1]/h5/a");
+
 
 
     By PhoneTabletsAndIpod = By.xpath("/html/body/div[1]/div[1]/div/div/nav/div/ul/li[3]/a");
@@ -28,7 +30,7 @@ public class ProductDetail extends BasePage {
 
      By notLoggedInWishlistButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[2]/button[2]/i");
 
-By loggedInWishlistButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[2]/button[2]");
+By loggedInWishlistButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[2]/button[2]/i");
      By quickViewButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[2]/button[3]/i");
 By errorMessage = By.xpath("/html/body/div[2]/div/div[2]/div[1]/p");
 By successMessage = By.xpath("/html/body/div[2]/div/div[2]/div/p");
@@ -38,9 +40,26 @@ By quickViewPopUp = By.xpath("/html/body/div[4]/div/div/div[1]/div/div/div[2]/di
      By compareButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[2]/button[4]/i");
     By CartIcon = By.xpath("/html/body/div[2]/div/div[2]/div[2]/div[1]/a");
     By productCompare = By.xpath("/html/body/div[2]/div/div[2]/div/p");
+
+    By wishlistButton = By.xpath("/html/body/div[1]/div[6]/header/div[2]/div[1]/div[4]/a/span");
+
+
+    By removeFromWishlistButton = By.xpath("/html/body/div[1]/div[5]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[6]/a");
+
+    By addToCartFromWishlistButton = By.xpath("/html/body/div[1]/div[5]/div[1]/div/div/div[1]/table/tbody/tr[1]/td[6]/button");
+
+    By successMessageWishlist = By.xpath("/html/body/div[1]/div[5]/div[1]/div[1]");
+
+    By navigationLocator = By.xpath("/html/body/div[1]/div[1]/div/div/nav");
+
+
+
     public void clickShopByCategory () {
         driver.findElement(ShopByCategory).click();
     }
+    public void resetCategory (){driver.findElement(resetCategory).click();}
+
+    public boolean isNavigationDisplayed () {return driver.findElement(navigationLocator).isDisplayed();}
 
         public void clickPhoneTabletsAndIpod(){
             driver.findElement(PhoneTabletsAndIpod).click();
@@ -85,16 +104,11 @@ By quickViewPopUp = By.xpath("/html/body/div[4]/div/div/div[1]/div/div/div[2]/di
     public void testWishlistWhenNotLoggedIn() {
         waitForTestWishlistWhenNotLoggedIn();driver.findElement(notLoggedInWishlistButton).click();
     }
-    /*By errorMessage = By.id("notification-box-top");
-    WebElement getErrorMessageElement = driver.findElement(errorMessage);
-    public Boolean getErrorMessage() {driver.findElement(errorMessage);
-        return getErrorMessageElement.isDisplayed();}
 
-    }*/
 
 
     public void waitForTestWishlistWhenLoggedIn() {
-        WebDriverWait wait = new WebDriverWait(driver, 2);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(loggedInWishlistButton));}
         public void testWishlistWhenLoggedIn() {
             waitForTestWishlistWhenLoggedIn();driver.findElement(loggedInWishlistButton).click();
@@ -115,7 +129,7 @@ By quickViewPopUp = By.xpath("/html/body/div[4]/div/div/div[1]/div/div/div[2]/di
     }
 
     public void clickCompare() {
-        driver.findElement(compareButton).click();
+        waitForCompare();driver.findElement(compareButton).click();
     }
 public void waitForErrorMessage(){
         WebDriverWait wait = new WebDriverWait(driver, 5);
@@ -141,6 +155,14 @@ public void waitForErrorMessage(){
     }
 
     public boolean getNotification (){checkProductCompare();return driver.findElement(productCompare).isDisplayed();}
+
+
+    public void clickOnWishlist (){driver.findElement(wishlistButton).click();}
+    public void removeFromWishlist (){driver.findElement(removeFromWishlistButton).click();}
+
+    public void addToCartFromWishlist (){driver.findElement(addToCartFromWishlistButton).click();}
+
+    public boolean isSuccessMessageDisplayed (){return driver.findElement(successMessageWishlist).isDisplayed();}
     }
 
 

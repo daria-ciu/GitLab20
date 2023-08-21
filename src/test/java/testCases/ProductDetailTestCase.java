@@ -16,12 +16,12 @@ public class ProductDetailTestCase extends BasePage {
     public void setUp() {
         super.setUp();
         productDetail = new ProductDetail(driver);
-        myAccount=new MyAccount(driver);
+        myAccount = new MyAccount(driver);
 
     }
 
-    @Test (priority = 1)
-    public void testAddToCart()throws InterruptedException {
+    @Test(priority = 1)
+    public void testAddToCart() throws InterruptedException {
         productDetail.clickShopByCategory();
         productDetail.clickPhoneTabletsAndIpod();
         productDetail.hoverOverImage();
@@ -35,12 +35,8 @@ public class ProductDetailTestCase extends BasePage {
     }
 
 
-
-
-
-
-    @Test (priority = 2)
-    public void testWishlistWhenNotLoggedIn()throws InterruptedException {
+    @Test(priority = 2)
+    public void testWishlistWhenNotLoggedIn() throws InterruptedException {
 
 
         productDetail.clickShopByCategory();
@@ -49,53 +45,86 @@ public class ProductDetailTestCase extends BasePage {
         productDetail.testWishlistWhenNotLoggedIn();
 
 
-       Boolean actualErrorMessage = productDetail.getErrorMessage();
-        Assert.assertTrue(actualErrorMessage,"You must login or create an account to save HTC Touch HD to your wish list!\"");
+        Boolean actualErrorMessage = productDetail.getErrorMessage();
+        Assert.assertTrue(actualErrorMessage, "You must login or create an account to save HTC Touch HD to your wish list!\"");
 
 
-}
-@Test (priority = 3)
+    }
 
-    public void testWishlistAfterLogin ()throws InterruptedException{
+    @Test(priority = 3)
+
+    public void testWishlistAfterLogin() throws InterruptedException {
         myAccount.clickOnMyAccount();
-    String username = "daria.ciubancan@gmail.com";
-    String password = "123456789";
-    myAccount.login(username, password);
-    productDetail.clickShopByCategory();
-    productDetail.clickPhoneTabletsAndIpod();
-    productDetail.hoverOverImage();
-    productDetail.testWishlistWhenLoggedIn();
+        String username = "daria.ciubancan@gmail.com";
+        String password = "123456789";
+        myAccount.login(username, password);
+        productDetail.clickShopByCategory();
+        productDetail.clickPhoneTabletsAndIpod();
+        productDetail.hoverOverImage();
+        productDetail.testWishlistWhenLoggedIn();
 
-    Boolean successMessage = productDetail.GetSuccessMessage();
-    Assert.assertTrue(successMessage, "Success: You have added HTC Touch HD to your wish list!");
+        Boolean successMessage = productDetail.GetSuccessMessage();
+        Assert.assertTrue(successMessage, "Success: You have added HTC Touch HD to your wish list!");
 
-}
-
-
-@Test(priority = 4)
-
-    public void testQuickView ()throws InterruptedException{
-
-    productDetail.clickShopByCategory();
-    productDetail.clickPhoneTabletsAndIpod();
-    productDetail.hoverOverImage();
-    productDetail.clickQuickView();
-
-    boolean quickViewPopUp = productDetail.isQuickViewPopUpDisplayed();
-    Assert.assertTrue(quickViewPopUp, "HTC Touch HD" );
-}
-@Test(priority = 5)
-
-    public void testCompare ()throws InterruptedException{
-    productDetail.clickShopByCategory();
-    productDetail.clickPhoneTabletsAndIpod();
-    productDetail.hoverOverImage();
-    productDetail.clickCompare();
-
-    boolean CheckproductCompare = productDetail.getNotification();
-    Assert.assertTrue(CheckproductCompare, "Success: You have added HTC Touch HD to your product comparison!");
-}
+    }
 
 
+    @Test(priority = 4)
 
+    public void testQuickView() throws InterruptedException {
+
+        productDetail.clickShopByCategory();
+        productDetail.clickPhoneTabletsAndIpod();
+        productDetail.hoverOverImage();
+        productDetail.clickQuickView();
+
+        boolean quickViewPopUp = productDetail.isQuickViewPopUpDisplayed();
+        Assert.assertTrue(quickViewPopUp, "HTC Touch HD");
+    }
+
+    @Test(priority = 5)
+
+    public void testCompare() throws InterruptedException {
+        productDetail.clickShopByCategory();
+        productDetail.clickPhoneTabletsAndIpod();
+        productDetail.hoverOverImage();
+        productDetail.clickCompare();
+
+        boolean CheckproductCompare = productDetail.getNotification();
+        Assert.assertTrue(CheckproductCompare, "Success: You have added HTC Touch HD to your product comparison!");
+    }
+
+
+    @Test(priority = 6)
+
+    public void removeFromWishlist() throws InterruptedException {
+        myAccount.clickOnMyAccount();
+        String username = "daria.ciubancan@gmail.com";
+        String password = "123456789";
+        myAccount.login(username, password);
+        productDetail.clickShopByCategory();
+        productDetail.clickPhoneTabletsAndIpod();
+        productDetail.hoverOverImage();
+        productDetail.testWishlistWhenLoggedIn();
+        productDetail.clickOnWishlist();
+        productDetail.removeFromWishlist();
+
+
+        boolean isSuccessMessageDisplayed = productDetail.isSuccessMessageDisplayed();
+
+        Assert.assertTrue(isSuccessMessageDisplayed, " Success: You have modified your wish list!");
+
+
+    }
+    @Test (priority = 7)
+
+    public void testResetCategory () throws InterruptedException {
+
+        productDetail.clickShopByCategory();
+        productDetail.resetCategory();
+
+        boolean isNavigationCategoryDisplayed = productDetail.isNavigationDisplayed();
+
+        Assert.assertTrue(isNavigationCategoryDisplayed, "Navigation bar is not displayed after clicking on reset button.");
+    }
 }

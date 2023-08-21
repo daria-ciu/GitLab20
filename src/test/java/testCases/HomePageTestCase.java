@@ -44,6 +44,14 @@ public class HomePageTestCase extends BasePage {
 
 
     }
+    @Test (priority = 4)
+
+    public void testHomepageIcon () throws InterruptedException {
+        homePage.clickOnImageCategory();
+        homePage.clickOnHomepageIcon();
+
+        Assert.assertEquals(driver.getCurrentUrl(), "https://ecommerce-playground.lambdatest.io/index.php?route=common/home");
+    }
     }
 
 
