@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage {
 
+    public boolean isMessageDisplayed;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -18,6 +20,14 @@ public class HomePage extends BasePage {
     By imageCategory = By.xpath("/html/body/div[1]/div[5]/div[1]/div[3]/div/div[2]/div/div[1]/div[2]/a/figure/div[1]/img");
 
     By homepageIconLocator = By.xpath("/html/body/div[1]/div[6]/header/div[2]/div[1]/div[1]/figure/a/img");
+
+
+    By firstBlogImageLocator = By.xpath("/html/body/div[1]/div[5]/div[1]/div[2]/div/div/div[1]/div[1]/div/div[2]/div/div/div/div/div[1]/div/div[1]/a/img");
+    By yourNameInput = By.id("input-name");
+    By EmailInput = By.id("input-email");
+    By yourCommentInput = By.id("input-comment");
+    By PostComment = By.id("button-comment");
+    By successPostMessage = By.xpath("/html/body/div[1]/div[5]/div[1]/div[2]/div[2]/div[1]/div[9]/form/div[1]");
 
     public void clickCategoryBlog() {
         driver.findElement(categoryBlog).click();
@@ -30,5 +40,16 @@ public class HomePage extends BasePage {
     public void clickOnImageCategory(){driver.findElement(imageCategory).click();}
     public void clickOnHomepageIcon (){driver.findElement(homepageIconLocator).click();}
 
+    public void clickOnFirstBlogImage (){driver.findElement(firstBlogImageLocator).click();}
+
+    public void postComment(String yourName, String Email, String yourComment) {
+        driver.findElement(yourNameInput).sendKeys(yourName);
+        driver.findElement(EmailInput).sendKeys(Email);
+        driver.findElement(yourCommentInput).sendKeys(yourComment);
+        driver.findElement(PostComment).click();
+
+    }
+
+    public boolean isMessageDisplayed(){return driver.findElement(successPostMessage).isDisplayed();}
 
 }

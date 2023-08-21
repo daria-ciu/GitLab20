@@ -52,7 +52,32 @@ public class HomePageTestCase extends BasePage {
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://ecommerce-playground.lambdatest.io/index.php?route=common/home");
     }
+
+
+    @Test (priority = 5)
+
+    public void testLeaveAcommentOnBlog() throws InterruptedException {
+        homePage.clickCategoryBlog();
+        homePage.clickOnFirstBlogImage();
+
+        String yourName = "Daria";
+        String Email = "daria.ciubancan@gmail.com";
+        String yourComment = "This is a very interesting article!";
+
+        homePage.postComment(yourName, Email, yourComment);
+
+        boolean isSuccesMessageDisplayed = homePage.isMessageDisplayed();
+
+        Assert.assertTrue(isSuccesMessageDisplayed, "Thank you for your comment. It has been submitted to the webmaster for approval.\n");
     }
+
+
+
+
+
+
+    }
+
 
 
 

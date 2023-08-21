@@ -81,9 +81,9 @@ public class MyAccountTestCase extends BasePage {
         myAccount.hoverOverImage();
         myAccount.clickOnLogOut();
 
-        boolean isSuccsesfulLogouMessageDisplayed = myAccount.isLogoutMessageDisplayed();
+        boolean isSuccesfulLogouMessageDisplayed = myAccount.isLogoutMessageDisplayed();
 
-        Assert.assertTrue(isSuccsesfulLogouMessageDisplayed, "You have been logged off your account. It is now safe to leave the computer.");
+        Assert.assertTrue(isSuccesfulLogouMessageDisplayed, "You have been logged off your account. It is now safe to leave the computer.");
 
 
     }
