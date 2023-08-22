@@ -13,7 +13,7 @@ import pages.HomePage;
 public class HomePageTestCase extends BasePage {
     private HomePage homePage;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         super.setUp();
         homePage = new HomePage(driver);
@@ -40,7 +40,7 @@ public class HomePageTestCase extends BasePage {
     public void  testHeaderImageClick () throws InterruptedException{
         homePage.clickOnImageCategory();
 
-        Assert.assertEquals(driver.getCurrentUrl(),"https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=18");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=46");
 
 
     }

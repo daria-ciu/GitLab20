@@ -17,14 +17,15 @@ public class InputControls extends BasePage {
     By inStockBox = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[5]/div[2]/div/div[1]/div");
     By preOrderBox = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[5]/div[2]/div/div[2]/div");
     By blueCheckbox = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[4]/div[2]/div/div[1]/div/label/img");
-    By colorClearButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[4]/div[1]/a");
+    By colorClearButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[4]/div[1]/a/i");
     By appleSelector = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[1]/div/label");
     By notActivePreOrderBox = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[5]/div[2]/div/div[2]/div");
     By firstRadio = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[7]/div[2]/div/div[1]/div");
     By sizeSelection = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[6]/div[2]/div/div[1]/div/label");
 
     By mainImageLocator = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[1]/a/div/div[1]/img");
-    By smallImageLocator = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[1]/a/ul/li[1]/img");
+    By mainImageLocatorAfter = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[1]/a/div/div[2]/img");
+    By smallImageLocator = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[1]/div[6]/div/div[1]/div/div[1]/div[1]/a/ul/li[2]/img");
 
     public void clickInStockBox (){driver.findElement(inStockBox).click();}
     public  void clickPreOrderBox (){driver.findElement(preOrderBox).click();}
@@ -32,9 +33,9 @@ public class InputControls extends BasePage {
     public void waitForColorClear (){
 
 
-    WebDriverWait wait = new WebDriverWait(driver, 2);
+    WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(colorClearButton));}
-    public void clickColorClear (){waitForColorClear();driver.findElement(colorClearButton).click();}
+    public void clickColorClear (){/*waitForColorClear();*/driver.findElement(colorClearButton).click();}
     public void clickAppleSelector (){driver.findElement(appleSelector).click();}
     public void clickNotActivePreOrderButton (){driver.findElement(notActivePreOrderBox).click();}
     public void clickFirstradio (){driver.findElement(firstRadio).click();}
@@ -51,6 +52,9 @@ public class InputControls extends BasePage {
 
     public String getMainImageBeforeSelection() {
         return driver.findElement(mainImageLocator).getAttribute("src");
+    }
+    public String getMainImageAfterSelection () {
+        return driver.findElement(mainImageLocatorAfter).getAttribute("src");
     }
     public void selectSmallImage(int index) {
         WebDriverWait wait = new WebDriverWait(driver, 10);

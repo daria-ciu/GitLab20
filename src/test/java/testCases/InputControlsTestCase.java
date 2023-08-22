@@ -112,7 +112,7 @@ boolean appleSelector = inputControls.AppleSelector();
     String mainImageBefore = inputControls.getMainImageBeforeSelection();
     inputControls.hoverOverImage();
     inputControls.selectSmallImage(1);
-    String mainImageAfter = inputControls.getMainImageBeforeSelection();
+    String mainImageAfter = inputControls.getMainImageAfterSelection();
     Assert.assertNotEquals(mainImageAfter, mainImageBefore, "Main image source should change after selecting a small image.");
     }
     }
