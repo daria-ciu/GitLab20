@@ -20,7 +20,7 @@ public class ProductDetailTestCase extends BasePage {
 
     }
 
-    @Test(priority = 1)
+    @Test
     public void testAddToCart() throws InterruptedException {
         productDetail.clickShopByCategory();
         productDetail.clickPhoneTabletsAndIpod();
@@ -35,7 +35,7 @@ public class ProductDetailTestCase extends BasePage {
     }
 
 
-    @Test(priority = 2)
+    @Test
     public void testWishlistWhenNotLoggedIn() throws InterruptedException {
 
 
@@ -51,7 +51,7 @@ public class ProductDetailTestCase extends BasePage {
 
     }
 
-    @Test(priority = 3)
+    @Test
 
     public void testWishlistAfterLogin() throws InterruptedException {
         myAccount.clickOnMyAccount();
@@ -69,7 +69,7 @@ public class ProductDetailTestCase extends BasePage {
     }
 
 
-    @Test(priority = 4)
+    @Test
 
     public void testQuickView() throws InterruptedException {
 
@@ -82,7 +82,7 @@ public class ProductDetailTestCase extends BasePage {
         Assert.assertTrue(quickViewPopUp, "HTC Touch HD");
     }
 
-    @Test(priority = 5)
+    @Test
 
     public void testCompare() throws InterruptedException {
         productDetail.clickShopByCategory();
@@ -95,7 +95,7 @@ public class ProductDetailTestCase extends BasePage {
     }
 
 
-    @Test(priority = 6)
+    @Test
 
     public void removeFromWishlist() throws InterruptedException {
         myAccount.clickOnMyAccount();
@@ -120,7 +120,7 @@ public class ProductDetailTestCase extends BasePage {
 
 
     }
-    @Test (priority = 7)
+    @Test
 
     public void testResetCategory () throws InterruptedException {
 

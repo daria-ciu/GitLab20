@@ -1,29 +1,20 @@
 package testCases;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.InputControls;
 
-public class InputControlsTestCase
-        extends BasePage {
+public class InputControlsTestCase extends BasePage {
     private InputControls inputControls;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         super.setUp();
-
         driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=28");
-    }
-
-    @BeforeMethod
-    public void navigateToCategoryPage() {
         inputControls = new InputControls(driver);
-
     }
-
 
     @Test(priority = 3)
     public void testSelectAppleOption() throws InterruptedException{
