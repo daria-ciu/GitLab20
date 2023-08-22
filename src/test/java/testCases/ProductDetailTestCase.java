@@ -106,7 +106,10 @@ public class ProductDetailTestCase extends BasePage {
         productDetail.clickPhoneTabletsAndIpod();
         productDetail.hoverOverImage();
         productDetail.testWishlistWhenLoggedIn();
+
+
         productDetail.clickOnWishlist();
+
 
         productDetail.removeFromWishlist();
 

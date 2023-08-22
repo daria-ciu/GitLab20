@@ -25,7 +25,7 @@ public class InputControlsTestCase
     }
 
 
-    @Test(priority = 1)
+    @Test(priority = 3)
     public void testSelectAppleOption() throws InterruptedException{
         inputControls.clickAppleSelector();
 
@@ -47,7 +47,7 @@ boolean appleSelector = inputControls.AppleSelector();
         Assert.assertTrue(isColorBlueSelected, "Color blue is not selected.");
     }
 
-    @Test (priority = 3)
+    @Test (priority = 1)
 
     public void testClearColorButton () throws InterruptedException{
         inputControls.selectBlueCheckbox();

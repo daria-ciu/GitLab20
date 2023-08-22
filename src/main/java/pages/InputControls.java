@@ -17,6 +17,7 @@ public class InputControls extends BasePage {
     By inStockBox = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[5]/div[2]/div/div[1]/div");
     By preOrderBox = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[5]/div[2]/div/div[2]/div");
     By blueCheckbox = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[4]/div[2]/div/div[1]/div/label/img");
+
     By colorClearButton = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[4]/div[1]/a/i");
     By appleSelector = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div[1]/div/label");
     By notActivePreOrderBox = By.xpath("/html/body/div[1]/div[6]/div[1]/div[3]/div/div[2]/div[1]/div/div[2]/div[5]/div[2]/div/div[2]/div");
