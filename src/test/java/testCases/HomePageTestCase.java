@@ -40,7 +40,7 @@ public class HomePageTestCase extends BasePage {
     public void  testHeaderImageClick () throws InterruptedException{
         homePage.clickOnImageCategory();
 
-        Assert.assertEquals(driver.getCurrentUrl(),"https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=46");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=18");
 
 
     }
